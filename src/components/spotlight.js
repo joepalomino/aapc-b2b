@@ -1,4 +1,10 @@
 import React from 'react'
+import tw from "tailwind.macro"
+import { Section, mq } from "./SharedStyledComponents"
+
+/** @jsx jsx */
+import { jsx } from "@emotion/core"
+import styled from "@emotion/styled"
 
 const SpotlightContainer = ({data: {
   heading: {
@@ -8,21 +14,21 @@ const SpotlightContainer = ({data: {
   spotlightComponent
 }}) => {  
   return (
-    <section class="bg-gray-lighter padding-top-50">
+    <Section headline={headline} subheadline={subheadline}>
       <div class="container bg-gray-lighter">
-        <header class="txt-center">
-            <div class="heading">
-              <h2>{headline}</h2>
-              <p>{subheadline}</p>
-              </div>
-          </header>
-          <div class="features">
+          <div>
             {spotlightComponent.map((spotlight) => <Spotlight key={spotlight.id} data={spotlight} />)}
           </div>
         </div>
-      </section>
+      </Section>
   )
 }
+
+const GridFeatureArea = styled.div({
+    padding: "40px 0 40px 0",
+    position:" relative",
+    width:" 100%",
+})
 
 const Spotlight = ({data:{
   headline,
@@ -41,7 +47,7 @@ const Spotlight = ({data:{
   }
 }}) => {
   return (
-    <div class="feature-spotlight">
+    <div css={{marginTop: "40px", marginBottom: "40px"}}>
       <div class="background">
           <div class="lead">
               <div>

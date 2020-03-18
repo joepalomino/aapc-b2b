@@ -32,12 +32,15 @@ const H2 = styled.h2(
   }
 )
 
-export const Section = ({ children, headline = "" }) => (
+export const Section = ({ children, headline = "", subheadline="" }) => (
   <ContentSection>
     <ContentContainer>
       {headline && (
         <Header>
           <H2>{headline}</H2>
+          {
+            subheadline && <p>{subheadline}</p>
+          }
         </Header>
       )}
       {children}
