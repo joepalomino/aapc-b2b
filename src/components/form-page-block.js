@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import Img from 'gatsby-image'
+import HubspotForm from './HubSpotForm'
 
 function FormPageBlock({
   data: {
@@ -48,27 +49,6 @@ function FormPageBlock({
   )
 }
 
-function HubspotForm(props) {
-  useEffect(() => {
-    const script = document.createElement("script")
-    script.src = "https://js.hsforms.net/forms/v2.js"
-    document.body.appendChild(script)
 
-    script.addEventListener("load", () => {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
-          portalId: "2072848",
-          formId: props.hbFormId,
-          target: "#hubspotForm",
-        })
-      }
-    })
-  })
-  return (
-    <div>
-      <div id="hubspotForm"></div>
-    </div>
-  )
-}
 
 export default FormPageBlock

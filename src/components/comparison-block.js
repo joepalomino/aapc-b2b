@@ -13,7 +13,7 @@ function ComparisonBlock({
 }) {
   return (
     <section>
-      <div className=" headline heading">
+      <div className="headline heading">
         <h2>{sectionHeading}</h2>
       </div>
       <div>

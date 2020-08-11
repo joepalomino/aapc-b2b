@@ -3,7 +3,7 @@ import Components from "./components"
 import Layout from "./Layout"
 
 const Page = ({ data }) => {
-  let { name, slug, contentBlocks } = data.contentfulPage
+  let { contentBlocks } = data.contentfulPage
 
   return (
     <Layout>
@@ -58,6 +58,7 @@ export const query = graphql`
           id
           sectionHeadline {
             headline
+            subheadline
           }
           layout
           style
@@ -70,6 +71,9 @@ export const query = graphql`
             }
             image {
               description
+              file {
+                url
+              }
               fluid(maxWidth: 1800, quality: 100) {
                 ...GatsbyContentfulFluid_tracedSVG
               }
@@ -157,6 +161,20 @@ export const query = graphql`
             id
           }
           hubspotFormId
+        }
+        ... on ContentfulFaqsContainer {
+          id
+          faqs {
+            id
+            question
+            answer {
+              answer
+            }
+          }
+          heading {
+            headline
+            subheadline
+          }
         }
       }
     }

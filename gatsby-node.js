@@ -23,6 +23,14 @@ exports.createPages = ({graphql, actions}) => {
           }
         }
       }
+      allContentfulResource {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
     }
     `
   ).then(result => {
@@ -32,10 +40,23 @@ exports.createPages = ({graphql, actions}) => {
 
     const pageTemplate = path.resolve("./src/components/page.js");
 
+
     result.data.allContentfulPage.edges.forEach(edge => {
       createPage({
         path: `/${edge.node.slug}`,
         component: pageTemplate,
+        context: {
+          slug: edge.node.slug
+        }
+      })
+    })
+
+    const resourcePageTemplate = path.resolve("./src/components/ResourcePage.js")
+
+    result.data.allContentfulResource.edges.forEach(edge => {
+      createPage({
+        path: `resources/${edge.node.slug}`,
+        component: resourcePageTemplate,
         context: {
           slug: edge.node.slug
         }

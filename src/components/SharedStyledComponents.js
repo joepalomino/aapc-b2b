@@ -8,20 +8,20 @@ const breakPoints = [576, 768, 992,1024, 1200]
 export const mq = breakPoints.map(bp => `@media (min-width: ${bp}px)`)
 
 const ContentSection = styled.section`
-  margin-top: 50px;
-  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: ${props => props.backgroundColor}
 `
 
-const ContentContainer = styled.div(
-  tw`mr-auto ml-auto bg-white max-w-screen-xl`,
+export const ContentContainer = styled.div(
+  tw`mr-auto ml-auto max-w-screen-xl`,
   {
     paddingLeft: 15,
     paddingRight: 15,
-    background: "#fff",
   }
 )
 
-const Header = styled.div(tw`text-center mx-w-4xl mt-0 mb-10 mx-auto`)
+const Header = styled.div(tw`text-center max-w-4xl mt-0 mb-10 mx-auto`)
 
 const H2 = styled.h2(
   tw`text-4xl leading-tight font-bold`,
@@ -32,8 +32,8 @@ const H2 = styled.h2(
   }
 )
 
-export const Section = ({ children, headline = "", subheadline="" }) => (
-  <ContentSection>
+export const Section = ({ children, headline = "", subheadline="", backgroundColor="white" }) => (
+  <ContentSection backgroundColor={backgroundColor}>
     <ContentContainer>
       {headline && (
         <Header>

@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Menu />
-      <main css={tw`pt-20`}>{children}</main>
+      <main css={tw`pt-24`}>{children}</main>
       <footer>
 
       </footer>

@@ -7,11 +7,6 @@ import { Button } from "./SharedStyledComponents"
 import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 
-const CardIcon = styled.img(tw`absolute top-0`, {
-  transform: "translateY(-50%)",
-  left: 36,
-  width: 45,
-})
 
 const CTALink = styled(Link)(
   tw`bg-b2b-black relative text-white rounded inline-block cursor-pointer py-3 px-5 no-underline font-bold text-center outline-none mt-auto self-start`,
@@ -22,16 +17,14 @@ const CTALink = styled(Link)(
   }
 )
 
-const CardSecondary = ({
+const CardTertiary = ({
   data: {
-    image: { description: altTxt = "", file: { url } = {} } = {},
     headline = "",
     content = "",
     cta: { link = "", label = "" } = {},
   } = {},
 }) => (
-  <div css={tw`relative bg-aapc-blue-lighter rounded-lg py-12 px-8 flex flex-col`}>
-    <CardIcon src={url} alt={altTxt} />
+  <div css={tw`relative bg-aapc-orange-lighter rounded-lg py-12 px-8 flex flex-col`}>
     <h3 css={tw`text-2xl font-bold mb-4`}>{headline}</h3>
     <p css={tw`mb-4`}>{content.content}</p>
 
@@ -50,4 +43,4 @@ const CardSecondary = ({
   </div>
 )
 
-export default CardSecondary
+export default CardTertiary

@@ -47,7 +47,13 @@ module.exports = {
         accessToken: `uiScwwDNo-u0bq52Jhne5vDYIPvdcy-Xu6P9tlgXHuU`,
       }
 
-    }
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

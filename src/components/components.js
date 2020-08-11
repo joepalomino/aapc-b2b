@@ -7,6 +7,7 @@ import SpotlightContainer from "./spotlight"
 import FeaturedImage from "./FeaturedImage"
 import ComparisonBlock from "./comparison-block"
 import FormPageBlock from './form-page-block'
+import FaqContainer from "./FaqContainer"
 
 const ComponentList = {
   page: Page,
@@ -16,7 +17,8 @@ const ComponentList = {
   ContentfulSpotlightsBlock: SpotlightContainer,
   ContentfulFeaturedImageComponent: FeaturedImage,
   ContentfulComparisonComponent: ComparisonBlock,
-  ContentfulFormPageBlock: FormPageBlock
+  ContentfulFormPageBlock: FormPageBlock,
+  ContentfulFaqsContainer: FaqContainer,
 }
 
 const Components = type => {
