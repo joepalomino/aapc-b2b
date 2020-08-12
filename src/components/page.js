@@ -176,6 +176,13 @@ export const query = graphql`
             subheadline
           }
         }
+        ... on ContentfulResourcesGallery {
+          id
+          heading {
+            headline
+            subheadline
+          }
+        }
       }
     }
   }
