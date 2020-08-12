@@ -75,8 +75,8 @@ const ResourcePage = ({
       pdf : {
         file: {
           url: pdfUrl
-        }
-      }
+        } = {}
+      } = {}
     },
   },
 }) => {

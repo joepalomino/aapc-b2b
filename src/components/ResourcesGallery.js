@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useState } from "react"
 import tw from "tailwind.macro"
 import { Section, mq } from "./SharedStyledComponents"
 import { Link, useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
@@ -37,15 +38,32 @@ function  ResourcesGallery({
     const types = edges.map(({node}) => {
         return node.type
     })
-    console.log(types);
+    
   return (
     <Section
       headline={headline}
       subheadline={subheadline}
-      backgroundColor={"#f4f5f7"}
     >
       <div>
-            resources
+           <ul>
+               {types.map((type, idx) => (<li key={idx}>
+                   {type}
+               </li>))}
+           </ul>
+           <ul>
+                {edges.map(({node: {
+                    id,
+                    type,
+                    slug,
+                    cardImage
+                }}) => (
+                    <li key={id}>
+                       <Link to={`/resources/${slug}`}>
+                        <Img fluid={cardImage.fluid} />
+                       </Link> 
+                    </li>
+                ))}
+           </ul>
       </div>
     </Section>
   )
