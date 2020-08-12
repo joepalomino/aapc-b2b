@@ -39,6 +39,13 @@ function  ResourcesGallery({
         return node.type
     })
     
+  const [filter, setFilter] = useState('all')
+
+  const handleFilterClick = type => {
+    type = type == filter ? 'all': type
+    setFilter(type)
+  }
+
   return (
     <Section
       headline={headline}
@@ -46,18 +53,21 @@ function  ResourcesGallery({
     >
       <div>
            <ul>
-               {types.map((type, idx) => (<li key={idx}>
+               {types.map((type, idx) => (<li key={idx} onClick={() => handleFilterClick(type)}>
                    {type}
                </li>))}
            </ul>
-           <ul>
-                {edges.map(({node: {
+           <ul css={tw`md:flex`}>
+                {edges.filter(resource => {
+                  if(filter == 'all') return true
+                  return filter == resource.node.type
+                }).map(({node: {
                     id,
                     type,
                     slug,
                     cardImage
                 }}) => (
-                    <li key={id}>
+                    <li css={tw`md:w-1/3`} key={id}>
                        <Link to={`/resources/${slug}`}>
                         <Img fluid={cardImage.fluid} />
                        </Link> 
