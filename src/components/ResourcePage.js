@@ -72,7 +72,7 @@ const ResourcePage = ({
       hubspotFormId,
       type,
       soundCloudPodcastId,
-      pdf : {
+      pdf: {
         file: {
           url: pdfUrl
         } = {}

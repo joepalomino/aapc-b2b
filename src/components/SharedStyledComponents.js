@@ -7,7 +7,7 @@ const breakPoints = [576, 768, 992,1024, 1200]
 
 export const mq = breakPoints.map(bp => `@media (min-width: ${bp}px)`)
 
-const ContentSection = styled.section`
+export const ContentSection = styled.section`
   padding-top: 50px;
   padding-bottom: 50px;
   background-color: ${props => props.backgroundColor}
@@ -21,7 +21,7 @@ export const ContentContainer = styled.div(
   }
 )
 
-const Header = styled.div(tw`text-center max-w-4xl mt-0 mb-10 mx-auto`)
+export const Header = styled.div(tw`text-center max-w-4xl mt-0 mb-10 mx-auto`)
 
 const H2 = styled.h2(
   tw`text-4xl leading-tight font-bold`,
