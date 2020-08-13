@@ -1,7 +1,7 @@
 import React from "react"
-import CardPrimary from "./card-primary"
-import CardSecondary from "./card-secondary"
-import CardTertiary from "./card-tertiary"
+import CardPrimary from "./Card-Primary"
+import CardSecondary from "./Card-Secondary"
+import CardTertiary from "./Card-Tertiary"
 import tw from "tailwind.macro"
 import { Section, mq } from "./SharedStyledComponents"
 

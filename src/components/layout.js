@@ -15,16 +15,6 @@ import tw from 'tailwind.macro'
 import { jsx } from "@emotion/core"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
       <Menu />
