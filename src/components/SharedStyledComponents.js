@@ -76,3 +76,10 @@ export const Button = styled.a({
     flexBasis: " auto",
   },
 })
+
+export const colors = {
+  "aapc-blue": {
+    light: "#0098d0",
+    default: "#1169a2"
+  }
+}
