@@ -72,14 +72,10 @@ const ResourcePage = ({
       hubspotFormId,
       type,
       soundCloudPodcastId,
-      pdf: {
-        file: {
-          url: pdfUrl
-        } = {}
-      } = {}
-    },
-  },
-}) => {
+      pdf
+    } = {},
+  } = {},
+} = {}) => {
   useEffect(() => {
     window.addEventListener("message", event => {
       if (
@@ -142,7 +138,7 @@ const ResourcePage = ({
               </div>
               <div>
                 <div>
-                  {type === 'podcast' ? <Podcast podcastId={soundCloudPodcastId}/> : <PDF img={cardImage} pdfLink={pdfUrl}/>}
+                  {type === 'podcast' ? <Podcast podcastId={soundCloudPodcastId}/> : <PDF img={cardImage} pdfLink={pdf.file.url}/>}
                 </div>
               </div>
             </div>
