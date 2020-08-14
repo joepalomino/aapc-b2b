@@ -12,7 +12,7 @@ import { jsx, css } from "@emotion/core"
 
 const Columns = styled.div(tw`flex`)
 
-function Menu() {
+function Menu({phoneNumber}) {
   const {
     contentfulNavigationContainer: { navigationElements = [] } = {},
   } = useStaticQuery(graphql`
@@ -48,6 +48,7 @@ function Menu() {
           </div>
           <div css={tw`hidden lg:block`}>
             <nav>
+            <div >Speak with us today: <a href={`tel:${phoneNumber}`}>{phoneNumber}</a></div>
               <Columns>
                 {navigationElements.map(
                   ({ id, navigationElements, title, link }) => (

@@ -11,9 +11,9 @@ import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 
 const Page = ({ data }) => {
-  let { contentBlocks, breadcrumbs, metaTitle, metaDescription } = data.contentfulPage
+  let { contentBlocks, breadcrumbs, metaTitle, metaDescription, phoneNumber } = data.contentfulPage
   return (
-    <Layout>
+    <Layout phoneNumber={phoneNumber}>
       <Seo title={metaTitle} description={metaDescription} />
       {breadcrumbs && (
         <Breadcrumbs breadcrumbs={breadcrumbs} />
@@ -41,6 +41,7 @@ export const query = graphql`
       breadcrumbs
       metaTitle
       metaDescription
+      phoneNumber
       contentBlocks {
         __typename
         ... on ContentfulHeroBannerBlock {
