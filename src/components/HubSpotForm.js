@@ -15,7 +15,7 @@ const FormContainer = styled.div({
   '& .hs-form-required': {
     color: 'red'
   },
-  '& input': {
+  '& .hs-input,.hs-button': {
     display: 'inline-block',
     width: '100% !important',
     height: '40px',

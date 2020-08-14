@@ -17,7 +17,7 @@ import { jsx } from "@emotion/core"
 const Layout = ({ children }) => {
   return (
     <>
-      <Menu />
+        <Menu />
       <main css={tw`pt-24`}>{children}</main>
       <footer>
 

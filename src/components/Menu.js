@@ -5,6 +5,7 @@ import tw from "tailwind.macro"
 import logo from "./logo.png"
 import bars from "../icons/bars.svg"
 import chevDown from "../icons/chev-down.svg"
+import { ContentContainer } from "./SharedStyledComponents"
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -38,34 +39,39 @@ function Menu() {
   // TODO: update render with recursive function so i can handle N nested menu items
   return (
     <>
-      <div
-        css={tw`flex justify-between fixed w-full bg-white z-50 items-center px-8`}
-      >
-        <div>
-          <a href="/">
-            <img src={logo} alt="logo" />
-          </a>
-        </div>
-        <div css={tw`hidden lg:block`}>
-          <nav>
-            <Columns>
-              {navigationElements.map(
-                ({ id, navigationElements, title, link }) => (
-                  <div key={id} css={tw`p-4`}>
-                    {!navigationElements ? (
-                      <Link to={`/${link ? link.slug : ""}/`} activeStyle={tw`text-aapc-blue`}>{title}</Link>
-                    ) : (
-                      <MenuItemWithSubMenu
-                        title={title}
-                        subMenuLinks={navigationElements}
-                      />
-                    )}
-                  </div>
-                )
-              )}
-            </Columns>
-          </nav>
-        </div>
+      <div css={tw`fixed w-full bg-white z-50  px-8`}>
+        <ContentContainer css={tw`flex justify-between items-center`}>
+          <div>
+            <a href="/">
+              <img src={logo} alt="logo" />
+            </a>
+          </div>
+          <div css={tw`hidden lg:block`}>
+            <nav>
+              <Columns>
+                {navigationElements.map(
+                  ({ id, navigationElements, title, link }) => (
+                    <div key={id} css={tw`p-4`}>
+                      {!navigationElements ? (
+                        <Link
+                          to={`/${link ? link.slug : ""}/`}
+                          activeStyle={tw`text-aapc-blue`}
+                        >
+                          {title}
+                        </Link>
+                      ) : (
+                        <MenuItemWithSubMenu
+                          title={title}
+                          subMenuLinks={navigationElements}
+                        />
+                      )}
+                    </div>
+                  )
+                )}
+              </Columns>
+            </nav>
+          </div>
+        </ContentContainer>
       </div>
       <MobileMenu navigationElements={navigationElements} />
     </>
@@ -85,7 +91,9 @@ function MenuItemWithSubMenu({ title, subMenuLinks }) {
         <div css={tw`absolute shadow-2xl rounded-md z-50 p-4 bg-white`}>
           {subMenuLinks.map(({ id, title, link: { slug } }) => (
             <div key={id}>
-              <Link to={`/${slug}/`} activeStyle={tw`text-aapc-blue`}>{title}</Link>
+              <Link to={`/${slug}/`} activeStyle={tw`text-aapc-blue`}>
+                {title}
+              </Link>
             </div>
           ))}
         </div>
@@ -100,11 +108,13 @@ function MobileMenuItemWithSubMenu({ title, subMenuLinks }) {
 
   return (
     <>
-      <MenuButton showMenu={showMenu} onClick={handleMenuClick}>{title}</MenuButton>
+      <MenuButton showMenu={showMenu} onClick={handleMenuClick}>
+        {title}
+      </MenuButton>
       {showMenu && (
         <ul css={tw`pl-4`}>
           {subMenuLinks.map(({ id, title, link: { slug } }) => (
-            <li key={id} css={tw`py-1`}> 
+            <li key={id} css={tw`py-1`}>
               <Link to={`/${slug}/`}>{title}</Link>
             </li>
           ))}

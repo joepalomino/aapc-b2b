@@ -83,3 +83,10 @@ export const colors = {
     default: "#1169a2"
   }
 }
+
+export const FormContainer = styled.div(
+  tw`bg-white my-4 p-8 m-auto rounded-lg relative max-w-lg w-full border border-solid border-gray-300`,
+  {
+    boxShadow: "0 10px 25px #ddd",
+  }
+)

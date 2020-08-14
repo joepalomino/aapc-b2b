@@ -2,13 +2,47 @@ import React from "react"
 import Components from "./Components"
 import Layout from "./Layout"
 import Seo from "./Seo"
+import tw from "tailwind.macro"
+import { ContentContainer } from "./SharedStyledComponents"
+
+/** @jsx jsx */
+import { jsx } from "@emotion/core"
+import styled from "@emotion/styled"
 
 const Page = ({ data }) => {
-  let { contentBlocks } = data.contentfulPage
-
+  let { contentBlocks, breadcrumbs, name } = data.contentfulPage
   return (
     <Layout>
-      <Seo title={data.contentfulPage.name} />
+      <Seo title={name} />
+      {breadcrumbs && (
+        <ContentContainer>
+          <div css={tw`flex items-center`}>
+            {breadcrumbs.map((breadcrumb, idx, arr) => {
+              if (idx < arr.length - 1) {
+                return (
+                  <>
+                    <div css={tw`text-gray-700 font-bold text-sm`}>
+                      {breadcrumb}
+                    </div>
+                    <span>
+                      <img
+                        css={tw`m-1`}
+                        src="https://static.aapc.com/aapc/images/svg/fa-angle-right.svg"
+                        alt="arrow pointing right"
+                        height="10"
+                        width="10"
+                      />
+                    </span>
+                  </>
+                )
+              } else {
+                return <div css={tw`font-bold text-sm`}>{breadcrumb}</div>
+              }
+            })}
+          </div>
+        </ContentContainer>
+      )}
+
       <div>
         {contentBlocks &&
           contentBlocks.map((contentBlock, index) => {
@@ -28,6 +62,7 @@ export const query = graphql`
       id
       name
       slug
+      breadcrumbs
       contentBlocks {
         __typename
         ... on ContentfulHeroBannerBlock {
@@ -124,16 +159,6 @@ export const query = graphql`
               ...GatsbyContentfulFluid_tracedSVG
             }
           }
-        }
-        ... on ContentfulComparisonComponent {
-          id
-          sectionHeading
-          aapcValue
-          competitorValue
-          blockHeadline
-          quote
-          quoteAuthor
-          quoteAuthorOrganization
         }
         ... on ContentfulFormPageBlock {
           id

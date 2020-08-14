@@ -3,7 +3,7 @@ import Layout from "./Layout"
 import HubspotForm from "./HubSpotForm"
 import Img from "gatsby-image"
 import tw from "tailwind.macro"
-import { ContentContainer, Button, Section, mq } from "./SharedStyledComponents"
+import { ContentContainer, Button, Section, mq, FormContainer } from "./SharedStyledComponents"
 
 
 /** @jsx jsx */
@@ -22,12 +22,7 @@ const Content = styled.div({
   },
 })
 
-const FormContainer = styled.div(
-  tw`bg-white my-4 p-8 m-auto rounded-lg relative max-w-lg w-full border border-solid border-gray-300`,
-  {
-    boxShadow: "0 10px 25px #ddd",
-  }
-)
+
 
 const Flex = styled.div(tw`md:flex`)
 
@@ -100,7 +95,7 @@ const ResourcePage = ({
         {!isFormSubmitted ? (
           <Flex>
             <div css={tw`md:w-2/3`}>
-              <Img fluid={bannerImage.fluid} />
+              <Img fluid={bannerImage.fluid} css={tw`mb-8`} />
               <Content
                 dangerouslySetInnerHTML={{
                   __html: html,
@@ -121,7 +116,7 @@ const ResourcePage = ({
           </Flex>
         ) : (
           <Flex>
-            <div css={tw`flex-1 p-12 flex items-center bg-gray-400 rounded-lg rounded-r-none`}>
+            <div css={tw`flex-1 p-12 flex items-center bg-gray-200 rounded-lg rounded-r-none`}>
               <div css={tw`mb-9 md:pt-16 md:pt-0`}>
                 <h1 css={tw`text-center md:text-left text-6xl font-bold`}>Thank you!</h1>
                 <Content
@@ -131,7 +126,7 @@ const ResourcePage = ({
                 />
               </div>
             </div>
-            <div css={tw`flex-1 items-center border-t border-b border-r border-gray-500 rounded-lg rounded-l-none`}>
+            <div css={tw`flex-1 items-center border-t border-b border-r border-gray-300 rounded-lg rounded-l-none`}>
               <div css={tw`text-center`}>
                 <h2 css={tw`text-5xl`}>{type}</h2>
                 <div css={tw`text-2xl mb-4`}>{type === 'podcast'? 'Listen to your free podcast!' : type === 'webinar'? 'Watch your free webinar!' :  `Download our complimentary ${type}` }</div>
