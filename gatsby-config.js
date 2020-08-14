@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `b2b example`,
-    description: `b2b test`,
+    title: `AAPC`,
+    description: `AAPC`,
     author: `@joepalomino`,
   },
   plugins: [

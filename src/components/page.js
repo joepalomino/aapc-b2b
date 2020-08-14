@@ -4,43 +4,19 @@ import Layout from "./Layout"
 import Seo from "./Seo"
 import tw from "tailwind.macro"
 import { ContentContainer } from "./SharedStyledComponents"
+import Breadcrumbs from './Breadrumbs'
 
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 
 const Page = ({ data }) => {
-  let { contentBlocks, breadcrumbs, name } = data.contentfulPage
+  let { contentBlocks, breadcrumbs, metaTitle, metaDescription } = data.contentfulPage
   return (
     <Layout>
-      <Seo title={name} />
+      <Seo title={metaTitle} description={metaDescription} />
       {breadcrumbs && (
-        <ContentContainer>
-          <div css={tw`flex items-center`}>
-            {breadcrumbs.map((breadcrumb, idx, arr) => {
-              if (idx < arr.length - 1) {
-                return (
-                  <>
-                    <div css={tw`text-gray-700 font-bold text-sm`}>
-                      {breadcrumb}
-                    </div>
-                    <span>
-                      <img
-                        css={tw`m-1`}
-                        src="https://static.aapc.com/aapc/images/svg/fa-angle-right.svg"
-                        alt="arrow pointing right"
-                        height="10"
-                        width="10"
-                      />
-                    </span>
-                  </>
-                )
-              } else {
-                return <div css={tw`font-bold text-sm`}>{breadcrumb}</div>
-              }
-            })}
-          </div>
-        </ContentContainer>
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
       )}
 
       <div>
@@ -63,6 +39,8 @@ export const query = graphql`
       name
       slug
       breadcrumbs
+      metaTitle
+      metaDescription
       contentBlocks {
         __typename
         ... on ContentfulHeroBannerBlock {
