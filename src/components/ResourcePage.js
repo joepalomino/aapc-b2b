@@ -4,6 +4,8 @@ import HubspotForm from "./HubSpotForm"
 import Img from "gatsby-image"
 import tw from "tailwind.macro"
 import { ContentContainer, Button, Section, mq, FormContainer } from "./SharedStyledComponents"
+import Seo from './seo'
+import CTAButtonLink from './CTALink'
 
 
 /** @jsx jsx */
@@ -58,11 +60,23 @@ const Webinar = () => (
 const ResourcePage = ({
   data: {
     contentfulResource: {
+      phoneNumber,
+      metaTitle,
+      metaDescription,
       bannerImage,
       cardImage,
       spotlight,
       content: {
         childMarkdownRemark: { html },
+      },
+      thankYouPageContent: {
+        childMarkdownRemark: {
+          html: thankYouPageHtml
+        }
+      },
+      thankYouCta: {
+        label,
+        link
       },
       hubspotFormId,
       type,
@@ -90,7 +104,8 @@ const ResourcePage = ({
   }
 
   return (
-    <Layout>
+    <Layout phoneNumber={phoneNumber}>
+      <Seo title={metaTitle} description={metaDescription} />
       <ContentContainer>
         {!isFormSubmitted ? (
           <Flex>
@@ -121,9 +136,10 @@ const ResourcePage = ({
                 <h1 css={tw`text-center md:text-left text-6xl font-bold`}>Thank you!</h1>
                 <Content
                   dangerouslySetInnerHTML={{
-                    __html: html,
+                    __html: thankYouPageHtml,
                   }}
                 />
+                {link && (<CTAButtonLink label={label} link={link} />)}
               </div>
             </div>
             <div css={tw`flex-1 items-center border-t border-b border-r border-gray-300 rounded-lg rounded-l-none`}>
@@ -148,6 +164,9 @@ export const query = graphql`
   query($slug: String!) {
     contentfulResource(slug: { eq: $slug }) {
       id
+      phoneNumber
+      metaTitle
+      metaDescription
       bannerImage {
         fluid(maxWidth: 1800, quality: 100) {
           ...GatsbyContentfulFluid_tracedSVG
@@ -164,6 +183,15 @@ export const query = graphql`
         childMarkdownRemark {
           html
         }
+      }
+      thankYouPageContent {
+        childMarkdownRemark {
+          html
+        }
+      }
+      thankYouCta {
+        label
+        link
       }
       hubspotFormId
       soundCloudPodcastId

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 import styled from "@emotion/styled"
 import tw from "tailwind.macro"
@@ -83,7 +83,7 @@ const SubHeadLine = styled.div(
   }
 )
 
-const LinkButton = styled.a(
+const LinkButton = styled(Link)(
   tw`bg-aapc-blue-light`,
   {
     appearance:'none',
@@ -130,7 +130,7 @@ const HeroBanner = ({
           <Content>
             <H1>{headline}</H1>
             <SubHeadLine>{subheadline}</SubHeadLine>
-            <div>{cta && <LinkButton href={cta.link}>{cta.label}</LinkButton>}</div>
+            <div>{cta && <LinkButton to={cta.link}>{cta.label}</LinkButton>}</div>
           </Content>
           
           {bannerFormComponent && (

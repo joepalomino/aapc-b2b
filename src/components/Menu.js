@@ -14,11 +14,12 @@ const Columns = styled.div(tw`flex`)
 
 function Menu({phoneNumber}) {
   const {
-    contentfulNavigationContainer: { navigationElements = [] } = {},
+    contentfulNavigationContainer: { navigationElements = [], phoneNumber: defaultPhoneNumber } = {},
   } = useStaticQuery(graphql`
     query SiteNavigationQuery {
       contentfulNavigationContainer {
         id
+        phoneNumber
         navigationElements {
           id
           title
@@ -36,6 +37,7 @@ function Menu({phoneNumber}) {
       }
     }
   `)
+  console.log(phoneNumber);
   // TODO: update render with recursive function so i can handle N nested menu items
   return (
     <>
@@ -48,7 +50,7 @@ function Menu({phoneNumber}) {
           </div>
           <div css={tw`hidden lg:block`}>
             <nav>
-            <div >Speak with us today: <a href={`tel:${phoneNumber}`}>{phoneNumber}</a></div>
+            <div css={tw`text-right text-sm`}>Speak with us today: <a css={tw`font-bold text-aapc-blue`} href={`tel:${phoneNumber || defaultPhoneNumber}`}>{phoneNumber || defaultPhoneNumber}</a></div>
               <Columns>
                 {navigationElements.map(
                   ({ id, navigationElements, title, link }) => (
