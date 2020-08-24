@@ -38,7 +38,7 @@ exports.createPages = ({graphql, actions}) => {
       console.log("Error retrieving contentful page data", result.errors);
     }
 
-    const pageTemplate = path.resolve("./src/components/page.js");
+    const pageTemplate = path.resolve("./src/components/Page.js");
 
 
     result.data.allContentfulPage.edges.forEach(edge => {
