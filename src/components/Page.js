@@ -58,17 +58,6 @@ export const query = graphql`
               link
             }
           }
-          bannerFormComponent {
-            id
-            formHeadline
-            formLabel
-            placeholderText
-            pagesToLinkTo {
-              id
-              name
-              slug
-            }
-          }
         }
         ... on ContentfulCardsBlock {
           id
@@ -187,6 +176,23 @@ export const query = graphql`
           heading {
             headline
             subheadline
+          }
+        }
+        ... on ContentfulEventsBlock {
+          id
+          heading {
+            headline
+            subheadline
+          }
+          events {
+            title
+            disabled
+            dateText
+            image {
+              fluid(maxWidth: 1800, quality: 100) {
+                ...GatsbyContentfulFluid_tracedSVG
+              }
+            }
           }
         }
       }

@@ -74,10 +74,7 @@ const ResourcePage = ({
           html: thankYouPageHtml
         }
       },
-      thankYouCta: {
-        label,
-        link
-      },
+      thankYouCta,
       hubspotFormId,
       type,
       soundCloudPodcastId,
@@ -139,7 +136,7 @@ const ResourcePage = ({
                     __html: thankYouPageHtml,
                   }}
                 />
-                {link && (<CTAButtonLink label={label} link={link} />)}
+                {thankYouCta && (<CTAButtonLink label={thankYouCta.label} link={thankYouCta.link} />)}
               </div>
             </div>
             <div css={tw`flex-1 items-center border-t border-b border-r border-gray-300 rounded-lg rounded-l-none`}>

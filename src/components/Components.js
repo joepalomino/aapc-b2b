@@ -9,6 +9,7 @@ import ComparisonBlock from "./Comparison-Block"
 import FormPageBlock from './form-page-block'
 import FaqContainer from "./FaqContainer"
 import ResourcesGallery from './ResourcesGallery'
+import Events from './Events'
 
 const ComponentList = {
   page: Page,
@@ -20,7 +21,8 @@ const ComponentList = {
   ContentfulComparisonComponent: ComparisonBlock,
   ContentfulFormPageBlock: FormPageBlock,
   ContentfulFaqsContainer: FaqContainer,
-  ContentfulResourcesGallery: ResourcesGallery
+  ContentfulResourcesGallery: ResourcesGallery,
+  ContentfulEventsBlock: Events
 }
 
 const Components = type => {

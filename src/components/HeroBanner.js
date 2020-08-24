@@ -66,7 +66,7 @@ const H1 = styled.h1(
     fontWeight: 'bold',
     lineHeight: '1',
     [mq[2]]: {
-      fontSize: 60,
+      fontSize: 62,
       lineHeight: 1.3
     }
   }
@@ -120,7 +120,6 @@ const HeroBanner = ({
       cta = null,
       backgroundImage,
     } = {},
-    bannerFormComponent,
   } = {},
 } = {}) => {
   return (
@@ -132,15 +131,6 @@ const HeroBanner = ({
             <SubHeadLine>{subheadline}</SubHeadLine>
             <div>{cta && <LinkButton to={cta.link}>{cta.label}</LinkButton>}</div>
           </Content>
-          
-          {bannerFormComponent && (
-            <BannerFormComponent
-              formHeadline={bannerFormComponent.formHeadline}
-              formLabel={bannerFormComponent.formLabel}
-              placeholderText={bannerFormComponent.placeholderText}
-              options={bannerFormComponent.pagesToLinkTo}
-            />
-          )}
         </Hero>
       </BackImg>
     </section>
