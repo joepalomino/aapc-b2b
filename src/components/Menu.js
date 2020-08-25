@@ -40,11 +40,11 @@ function Menu({phoneNumber}) {
   // TODO: update render with recursive function so i can handle N nested menu items
   return (
     <>
-      <div css={tw`fixed w-full bg-white z-50  px-8`}>
+      <div css={tw`fixed w-full bg-white z-50  px-8 hidden md:block`}>
         <ContentContainer css={tw`flex justify-between items-center`}>
           <div>
             <a href="/">
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" css={{width: 266}}/>
             </a>
           </div>
           <div css={tw`hidden lg:block`}>
@@ -158,7 +158,7 @@ function MobileMenu({ navigationElements }) {
       >
         <div>
           <a href="/">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" css={{width: 200}}/>
           </a>
         </div>
         <div>
