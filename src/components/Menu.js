@@ -37,7 +37,6 @@ function Menu({phoneNumber}) {
       }
     }
   `)
-  console.log(phoneNumber);
   // TODO: update render with recursive function so i can handle N nested menu items
   return (
     <>
@@ -57,7 +56,7 @@ function Menu({phoneNumber}) {
                     <div key={id} css={tw`p-4`}>
                       {!navigationElements ? (
                         <Link
-                          to={`/${link ? link.slug : ""}/`}
+                          to={ link.slug == 'overview' ? "/" : `/${link.slug}/`}
                           activeStyle={tw`text-aapc-blue`}
                         >
                           {title}
@@ -175,7 +174,7 @@ function MobileMenu({ navigationElements }) {
               ({ id, navigationElements, title, link }) => (
                 <li key={id} css={tw`mb-4`}>
                   {!navigationElements ? (
-                    <Link to={`/${link ? link.slug : ""}/`}>{title}</Link>
+                    <Link to={ link.slug == 'overview' ? "/" : `/${link.slug}/`}>{title}</Link>
                   ) : (
                     <MobileMenuItemWithSubMenu
                       title={title}

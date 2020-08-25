@@ -123,7 +123,7 @@ export const query = graphql`
           id
           header
           image {
-            fluid(maxWidth: 1800, quality: 100) {
+            fluid(maxWidth: 920, quality: 100) {
               ...GatsbyContentfulFluid_tracedSVG
             }
           }

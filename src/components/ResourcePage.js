@@ -6,6 +6,7 @@ import tw from "tailwind.macro"
 import { ContentContainer, Button, Section, mq, FormContainer } from "./SharedStyledComponents"
 import Seo from './seo'
 import CTAButtonLink from './CTALink'
+import WistiaVideo from './WistaVideo'
 
 
 /** @jsx jsx */
@@ -65,20 +66,14 @@ const ResourcePage = ({
       metaDescription,
       bannerImage,
       cardImage,
-      spotlight,
-      content: {
-        childMarkdownRemark: { html },
-      },
-      thankYouPageContent: {
-        childMarkdownRemark: {
-          html: thankYouPageHtml
-        }
-      },
+      content,
+      thankYouPageContent,
       thankYouCta,
       hubspotFormId,
       type,
       soundCloudPodcastId,
-      pdf
+      pdf,
+      webinarUrl
     } = {},
   } = {},
 } = {}) => {
@@ -89,7 +84,6 @@ const ResourcePage = ({
         event.data.eventName === "onFormSubmitted"
       ) {
         handleFormSubmit()
-        console.log("form submitted")
       }
     })
   }, [])
@@ -110,7 +104,7 @@ const ResourcePage = ({
               <Img fluid={bannerImage.fluid} css={tw`mb-8`} />
               <Content
                 dangerouslySetInnerHTML={{
-                  __html: html,
+                  __html: content.childMarkdownRemark.html,
                 }}
               />
             </div>
@@ -133,7 +127,7 @@ const ResourcePage = ({
                 <h1 css={tw`text-center md:text-left text-6xl font-bold`}>Thank you!</h1>
                 <Content
                   dangerouslySetInnerHTML={{
-                    __html: thankYouPageHtml,
+                    __html: thankYouPageContent.childMarkdownRemark.html,
                   }}
                 />
                 {thankYouCta && (<CTAButtonLink label={thankYouCta.label} link={thankYouCta.link} />)}
@@ -146,7 +140,7 @@ const ResourcePage = ({
               </div>
               <div>
                 <div>
-                  {type === 'podcast' ? <Podcast podcastId={soundCloudPodcastId}/> : <PDF img={cardImage} pdfLink={pdf.file.url}/>}
+                  {type === 'podcast' ? <Podcast podcastId={soundCloudPodcastId}/> : type === 'eBrief' ? <PDF img={cardImage} pdfLink={pdf.file.url}/> : <WistiaVideo wistiaId={webinarUrl} />}
                 </div>
               </div>
             </div>
@@ -192,6 +186,7 @@ export const query = graphql`
       }
       hubspotFormId
       soundCloudPodcastId
+      webinarUrl
       pdf {
         file {
           url

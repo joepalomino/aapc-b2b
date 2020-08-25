@@ -14,7 +14,7 @@ function FeaturedImage({
 }) {
   return (
     <Section headline={header}>
-      <Img fluid={fluid} alt="" css={{width: 'auto'}}/>
+        <Img fluid={fluid} alt="featured" css={{width: '920px', margin: 'auto'}}/>
     </Section>
   )
 }

@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import tw from "tailwind.macro"
+import {useLocation} from '@reach/router'
+import queryString from 'query-string'
 import {
   Section,
   mq,
@@ -17,7 +19,7 @@ import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 
 const FilterButtton = styled.button(
-  tw`mr-4 bg-gray-300 rounded-lg p-4 cursor-pointer focus:outline-none border-0 capitalize`,
+  tw`mr-4 bg-gray-300 rounded-lg p-4 cursor-pointer focus:outline-none border-0 capitalize mb-4`,
   {},
   props => {
     if (props.active) {
@@ -69,13 +71,17 @@ function ResourcesGallery({
     }
   `)
 
+
   const types = edges.reduce((accu, curr) => {
     return accu.includes(curr.node.type) ? accu : [...accu, curr.node.type]
   }, [])
 
   const spotlights = edges.filter(resource => resource.node.spotlight)
 
-  const [filter, setFilter] = useState("all")
+  const location = useLocation();
+  const urlFilter = location.search ? queryString.parse(location.search).filter : 'all'
+
+  const [filter, setFilter] = useState(urlFilter)
 
   const handleFilterClick = type => {
     type = type == filter ? "all" : type
@@ -93,17 +99,17 @@ function ResourcesGallery({
           <h1 css={tw`text-6xl`}>{headline}</h1>
           <span css={tw`text-2xl`}>{subheadline}</span>
         </Header>
-        <div css={tw`flex justify-around items-center mb-16`}>
-          <div css={tw`w-2/5`}>
+        <div css={tw`md:flex justify-around items-center mb-16`}>
+          <div css={tw`md:w-2/5`}>
             <Link to={`/resources/${spotlight.node.slug}`}>
               <Img
-                css={tw`rounded-lg`}
+                css={tw`rounded-lg w-full`}
                 fluid={spotlight.node.cardImage.fluid}
               />
             </Link>
           </div>
-          <div css={tw`w-2/5`}>
-            <h2 css={tw`text-4xl font-bold`}>Spotlight</h2>
+          <div css={tw`md:w-2/5 text-center md:text-left`}>
+            <h2 css={tw`text-4xl font-bold mb-4`}>Spotlight</h2>
             <h4 css={tw`text-2xl mb-4 font-bold`}>{spotlight.node.title}</h4>
             <p css={tw`mb-4`}>{spotlight.node.content.content}</p>
             <CTAButtonLink
@@ -133,7 +139,7 @@ function ResourcesGallery({
                 return filter == resource.node.type
               })
               .map(({ node: { id, type, slug, cardImage } }) => (
-                <li css={tw`md:w-1/3 mb-6 px-3 rounded-lg`} key={id}>
+                <li css={tw`md:w-1/3 mb-6 md:pr-6 rounded-lg`} key={id}>
                   <Link to={`/resources/${slug}`}>
                     <Img css={tw`rounded-lg`} fluid={cardImage.fluid} />
                   </Link>

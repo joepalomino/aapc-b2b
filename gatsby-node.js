@@ -43,7 +43,7 @@ exports.createPages = ({graphql, actions}) => {
 
     result.data.allContentfulPage.edges.forEach(edge => {
       createPage({
-        path: `/${edge.node.slug}`,
+        path: edge.node.slug == 'overview' ? '/' : `/${edge.node.slug}`,
         component: pageTemplate,
         context: {
           slug: edge.node.slug
