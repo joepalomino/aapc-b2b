@@ -1,4 +1,4 @@
-import ComponentNotFound from "./Component-not-found"
+import ComponentNotFound from "./Component-Not-Found"
 import Page from "./Page"
 import HeroBanner from "./HeroBanner"
 import Cards from "./Cards"
