@@ -195,6 +195,17 @@ export const query = graphql`
             }
           }
         }
+        ... on ContentfulFeaturedText {
+          id
+          heading {
+            headline
+            subheadline
+          }
+          cta {
+            label
+            link
+          }
+        }
       }
     }
   }

@@ -50,7 +50,7 @@ function Menu({phoneNumber}) {
           </div>
           <div css={tw`hidden lg:block`}>
             <nav>
-            <div css={tw`text-right text-sm`}>Speak with us today: <a css={tw`font-bold text-aapc-blue`} href={`tel:${phoneNumber || defaultPhoneNumber}`}>{phoneNumber || defaultPhoneNumber}</a></div>
+            <div css={tw`text-right text-sm pr-4`}>Speak with us today: <a css={tw`font-bold text-aapc-blue`} href={`tel:${phoneNumber || defaultPhoneNumber}`}>{phoneNumber || defaultPhoneNumber}</a></div>
               <Columns>
                 {navigationElements.map(
                   ({ id, navigationElements, title, link }) => (
