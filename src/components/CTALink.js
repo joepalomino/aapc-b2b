@@ -6,7 +6,7 @@ import tw from "tailwind.macro"
 import { jsx } from "@emotion/core"
 import styled from "@emotion/styled"
 
-const CTALink = styled(Link)(
+export const CTALink = styled(Link)(
   tw`bg-b2b-black relative text-white rounded inline-block cursor-pointer py-3 px-5 no-underline font-bold text-center outline-none mt-auto self-start`,
   {
     transformStyle: "preserve-3d",

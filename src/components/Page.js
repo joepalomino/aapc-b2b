@@ -186,8 +186,8 @@ export const query = graphql`
           }
           events {
             title
-            disabled
             dateText
+            link
             image {
               fluid(maxWidth: 1800, quality: 100) {
                 ...GatsbyContentfulFluid_tracedSVG

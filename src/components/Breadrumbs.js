@@ -11,10 +11,11 @@ const Breadcrumbs = ({breadcrumbs}) => (
   <ContentContainer>
     <div css={tw`flex items-center mb-4`}>
       {breadcrumbs.map((breadcrumb, idx, arr) => {
+        
         if (idx < arr.length - 1) {
           return (
-            <>
-              <div key={idx} css={tw`text-gray-700 font-bold text-sm`}>{breadcrumb}</div>
+            <React.Fragment key={idx}>
+              <div css={tw`text-gray-700 font-bold text-sm`}>{breadcrumb}</div>
               <span>
                 <img
                   css={tw`m-1`}
@@ -24,7 +25,7 @@ const Breadcrumbs = ({breadcrumbs}) => (
                   width="5"
                 />
               </span>
-            </>
+            </React.Fragment>
           )
         } else {
           return <div key={idx} css={tw`font-bold text-sm`}>{breadcrumb}</div>
