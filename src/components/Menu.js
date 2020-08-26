@@ -56,7 +56,7 @@ function Menu({phoneNumber}) {
                     <div key={id} css={tw`p-4`}>
                       {!navigationElements ? (
                         <Link
-                          to={ link.slug == 'overview' ? "/" : `/${link.slug}/`}
+                          to={ link.slug == 'overview' ? "/" : `/${link.slug}`}
                           activeStyle={tw`text-aapc-blue`}
                         >
                           {title}
@@ -93,7 +93,7 @@ function MenuItemWithSubMenu({ title, subMenuLinks }) {
         <div css={tw`absolute shadow-2xl rounded-md z-50 p-4 bg-white`}>
           {subMenuLinks.map(({ id, title, link: { slug } }) => (
             <div key={id}>
-              <Link to={`/${slug}/`} activeStyle={tw`text-aapc-blue`}>
+              <Link to={`/${slug}`} activeStyle={tw`text-aapc-blue`}>
                 {title}
               </Link>
             </div>
@@ -117,7 +117,7 @@ function MobileMenuItemWithSubMenu({ title, subMenuLinks }) {
         <ul css={tw`pl-4`}>
           {subMenuLinks.map(({ id, title, link: { slug } }) => (
             <li key={id} css={tw`py-1`}>
-              <Link to={`/${slug}/`}>{title}</Link>
+              <Link to={`/${slug}`}>{title}</Link>
             </li>
           ))}
         </ul>
@@ -174,7 +174,7 @@ function MobileMenu({ navigationElements }) {
               ({ id, navigationElements, title, link }) => (
                 <li key={id} css={tw`mb-4`}>
                   {!navigationElements ? (
-                    <Link to={ link.slug == 'overview' ? "/" : `/${link.slug}/`}>{title}</Link>
+                    <Link to={ link.slug == 'overview' ? "/" : `/${link.slug}`}>{title}</Link>
                   ) : (
                     <MobileMenuItemWithSubMenu
                       title={title}
