@@ -2,10 +2,10 @@ import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import styled from "@emotion/styled"
 import tw from "tailwind.macro"
-import logo from "./logo.png"
 import bars from "../icons/bars.svg"
 import chevDown from "../icons/chev-down.svg"
 import { ContentContainer } from "./SharedStyledComponents"
+import logo from '../icons/aapc-logo.svg'
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core"
@@ -44,7 +44,7 @@ function Menu({phoneNumber}) {
         <ContentContainer css={tw`flex justify-between items-center`}>
           <div>
             <a href="/">
-              <img src={logo} alt="logo" css={{width: 266}}/>
+              <img src={logo} alt="logo" css={{width: 200, marginTop: '1rem'}}/>
             </a>
           </div>
           <div css={tw`hidden lg:block`}>
@@ -154,11 +154,11 @@ function MobileMenu({ navigationElements }) {
   return (
     <div css={tw`lg:hidden`}>
       <div
-        css={tw`flex justify-between fixed w-full bg-white z-50 items-center px-8`}
+        css={tw`flex justify-between fixed w-full bg-white z-50 items-center px-8 h-20`}
       >
         <div>
           <a href="/">
-            <img src={logo} alt="logo" css={{width: 200}}/>
+            <img src={logo} alt="logo" css={{width: 150}}/>
           </a>
         </div>
         <div>

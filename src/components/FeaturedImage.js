@@ -1,11 +1,12 @@
 import React from "react"
+import tw from "tailwind.macro"
 
 import Img from "gatsby-image"
 import { Section } from "./SharedStyledComponents"
 
 /** @jsx jsx */
-import {jsx, css } from '@emotion/core'
- 
+import { jsx, css } from "@emotion/core"
+
 function FeaturedImage({
   data: {
     header,
@@ -14,7 +15,7 @@ function FeaturedImage({
 }) {
   return (
     <Section headline={header}>
-        <Img fluid={fluid} alt="featured" css={{width: '920px', margin: 'auto'}}/>
+      <Img fluid={fluid} alt="featured" css={tw`max-w-4xl m-auto`} />
     </Section>
   )
 }
