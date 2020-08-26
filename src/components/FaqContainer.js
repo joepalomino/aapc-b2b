@@ -55,7 +55,7 @@ const FAQ = ({ question, answer: { answer } }) => {
         active={isExpanded}
       >
         <div css={tw`flex items-center`}>
-          <h4 css={tw`text-xl text-b2b-gray-dark font-bold`}>{question}</h4>
+          <h3 css={tw`text-xl text-b2b-gray-dark font-bold`}>{question}</h3>
           <div css={tw`ml-auto`}>
             <svg
               id="angle-down-solid"
