@@ -104,7 +104,7 @@ const LinkButton = styled(Link)(
     transition:'box-shadow 420ms cubic-bezier(0.165, 0.84, 0.44, 1),color 420ms cubic-bezier(0.165, 0.84, 0.44, 1),background 420ms cubic-bezier(0.165, 0.84, 0.44, 1)',
     boxShadow:'none',
     backgroundColor:'#0098d0',
-    color:'white',
+    color:'black',
     [mq[1]]: {
       display: 'inline-block',
       width: 'auto'

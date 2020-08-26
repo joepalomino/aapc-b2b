@@ -69,7 +69,7 @@ export const Button = styled.a({
   width: "auto",
   boxShadow: "none",
   backgroundColor: "#1169a2",
-  color: "white",
+  color: "black",
   [mq[1]]: {
     display: "inline-block",
     whiteSpace: "nowrap",
