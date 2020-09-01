@@ -9,14 +9,14 @@ import styled from "@emotion/styled"
 
 const SpotlightContainer = ({
   data: {
-    heading: { headline, subheadline },
+    heading,
     spotlightComponent,
   },
 }) => {
   return (
     <Section
-      headline={headline}
-      subheadline={subheadline}
+      headline={heading.headline}
+      subheadline={heading.subheadline}
       backgroundColor={"#f4f5f7"}
     >
       <div>
