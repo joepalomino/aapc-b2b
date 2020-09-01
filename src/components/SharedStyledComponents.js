@@ -37,7 +37,7 @@ export const Section = ({ children, headline = "", subheadline="", backgroundCol
     <ContentContainer>
       {headline && (
         <Header>
-          <H2>{headline}</H2>
+          {headline && <H2>{headline}</H2>}
           {
             subheadline && <p>{subheadline}</p>
           }
