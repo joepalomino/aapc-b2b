@@ -15,8 +15,8 @@ const SpotlightContainer = ({
 }) => {
   return (
     <Section
-      headline={heading.headline}
-      subheadline={heading.subheadline}
+      headline={heading && heading.headline}
+      subheadline={heading && heading.subheadline}
       backgroundColor={"#f4f5f7"}
     >
       <div>
